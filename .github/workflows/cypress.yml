@@ -33,7 +33,7 @@ jobs:
         with:
           # Starts web server for E2E tests - replace with your own server invocation
           # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
-          start: pnpm preview #run-p lint test:ci test:e2e:ci
+          start: pnpm run-p lint test:ci test:e2e:ci
           wait-on: 'http://localhost:4173' # Waits for above
           # Records to Cypress Cloud
           # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record

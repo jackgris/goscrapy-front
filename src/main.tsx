@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { registerSW } from 'virtual:pwa-register'
 import './index.css'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 registerSW()
 
@@ -23,7 +24,9 @@ if (container) {
 	root.render(
 		<StrictMode>
 			<QueryClientProvider client={queryClient}>
-				<App />
+				<Router>
+					<App />
+				</Router>
 			</QueryClientProvider>
 		</StrictMode>
 	)

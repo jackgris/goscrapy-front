@@ -1,12 +1,14 @@
-import { screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import App from 'App'
-import renderWithProviders from 'testUtils'
+import { BrowserRouter } from 'react-router-dom'
 
 describe('<App />', () => {
 	it('renders', async () => {
 		window.history.pushState({}, 'Home', '/')
-		renderWithProviders(<App />, false)
+		render(<App />, { wrapper: BrowserRouter })
 
-		await expect(screen.findByText('GoScrapy')).resolves.toBeInTheDocument()
+		await expect(
+			screen.findByText('GoScrapyFront')
+		).resolves.toBeInTheDocument()
 	})
 })

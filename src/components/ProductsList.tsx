@@ -4,8 +4,10 @@ interface Properties {
 	products: Product[]
 }
 
+const STYLE = 'p-5'
+
 const ProductList = ({ products }: Properties): JSX.Element => (
-	<div>
+	<div className={`${STYLE}`}>
 		{products.map(product => (
 			<ProductComponent key={product.name} product={product} />
 		))}

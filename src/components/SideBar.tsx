@@ -40,11 +40,13 @@ const Sidebar = (): JSX.Element => {
 		"open ? 'whitespace-pre duration-500'  : 'translate-x-28 overflow-hidden opacity-0'"
 	const HIDE =
 		'open && hidden absolute left-48 w-0 overflow-hidden whitespace-pre rounded-md bg-white px-0 py-0 font-semibold text-gray-900 drop-shadow-lg group-hover:left-14 group-hover:w-fit group-hover:px-2 group-hover:py-1 group-hover:duration-300'
+	const TITLE =
+		'p-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'
 
 	const onOpenCloseButton = (): void => setOpen(!open)
 
 	return (
-		<section className='flex gap-6'>
+		<section className='flex'>
 			<div
 				className={`min-h-screen bg-[#0e0e0e] ${
 					open ? 'w-72' : 'w-16'
@@ -73,9 +75,7 @@ const Sidebar = (): JSX.Element => {
 				</div>
 			</div>
 			<div>
-				<div className='m-3 text-xl font-semibold text-gray-900'>
-					GoScrapyFront
-				</div>
+				<div className={`${TITLE}`}>GoScrapyFront</div>
 				<ProductList products={properties} />
 			</div>
 		</section>

@@ -9,6 +9,13 @@ import { Link } from 'react-router-dom'
 import ProductList from 'components/ProductsList'
 import type { Product } from 'components/ProductComponent'
 import data from '../../data/products.json'
+import UserComponent from './UserComponent'
+import MessagesComponent from './MessagesComponent'
+import AnalyticsComponent from './AnalyticsComponent'
+import FileManagerComponent from './FileManagerComponent'
+import CartComponent from './CartComponent'
+import SavedComponent from './SavedComponent'
+import SettingComponent from './SettingComponent'
 
 const properties: Product[] = data.map(p => {
 	const product = {
@@ -32,6 +39,10 @@ const Sidebar = (): JSX.Element => {
 		{ name: 'Setting', link: '/', icon: RiSettings4Line }
 	]
 	const [open, setOpen] = useState(true)
+	const [activeLink, setActiveLink] = useState('dashboard')
+	const onHandleLinkClick = (link: string): void => {
+		setActiveLink(link)
+	}
 
 	const MARGIN =
 		"menu.margin && 'mt-5' group flex items-center gap-3.5  rounded-md p-2 text-sm font-medium hover:bg-gray-80"
@@ -61,7 +72,12 @@ const Sidebar = (): JSX.Element => {
 				</div>
 				<div className='relative mt-4 flex flex-col gap-4'>
 					{menus.map((menu, index) => (
-						<Link to={menu.link} key={menu.name} className={`${MARGIN}`}>
+						<Link
+							to={menu.link}
+							key={menu.name}
+							className={`${MARGIN}`}
+							onClick={(): void => onHandleLinkClick(menu.name)}
+						>
 							<div>{React.createElement(menu.icon, { size: '20' })}</div>
 							<h2
 								style={{ transitionDelay: `${index + TRANSITION_TIME}00ms` }}
@@ -74,10 +90,17 @@ const Sidebar = (): JSX.Element => {
 					))}
 				</div>
 			</div>
-			<div>
+			<main>
 				<div className={`${TITLE}`}>GoScrapyFront</div>
-				<ProductList products={properties} />
-			</div>
+				{activeLink === 'dashboard' && <ProductList products={properties} />}
+				{activeLink === 'user' && <UserComponent />}
+				{activeLink === 'messages' && <MessagesComponent />}
+				{activeLink === 'analytics' && <AnalyticsComponent />}
+				{activeLink === 'File Manager' && <FileManagerComponent />}
+				{activeLink === 'Cart' && <CartComponent />}
+				{activeLink === 'Saved' && <SavedComponent />}
+				{activeLink === 'Setting' && <SettingComponent />}
+			</main>
 		</section>
 	)
 }

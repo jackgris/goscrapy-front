@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { HiMenuAlt3 } from 'react-icons/hi'
 import { MdOutlineDashboard } from 'react-icons/md'
-import { RiSettings4Line } from 'react-icons/ri'
+import { RiLogoutBoxRLine, RiSettings4Line } from 'react-icons/ri'
 import { TbReportAnalytics } from 'react-icons/tb'
 import { AiOutlineUser, AiOutlineHeart } from 'react-icons/ai'
 import { FiMessageSquare, FiFolder, FiShoppingCart } from 'react-icons/fi'
@@ -16,6 +16,7 @@ import FileManagerComponent from './FileManagerComponent'
 import CartComponent from './CartComponent'
 import SavedComponent from './SavedComponent'
 import SettingComponent from './SettingComponent'
+import LogoutComponent from './LogoutComponent'
 
 const properties: Product[] = data.map(p => {
 	const product = {
@@ -36,7 +37,8 @@ const Sidebar = (): JSX.Element => {
 		{ name: 'File Manager', link: '/', icon: FiFolder },
 		{ name: 'Cart', link: '/', icon: FiShoppingCart },
 		{ name: 'Saved', link: '/', icon: AiOutlineHeart, margin: true },
-		{ name: 'Setting', link: '/', icon: RiSettings4Line }
+		{ name: 'Setting', link: '/', icon: RiSettings4Line },
+		{ name: 'logout', link: '/', icon: RiLogoutBoxRLine }
 	]
 	const [open, setOpen] = useState(true)
 	const [activeLink, setActiveLink] = useState('dashboard')
@@ -100,6 +102,7 @@ const Sidebar = (): JSX.Element => {
 				{activeLink === 'Cart' && <CartComponent />}
 				{activeLink === 'Saved' && <SavedComponent />}
 				{activeLink === 'Setting' && <SettingComponent />}
+				{activeLink === 'logout' && <LogoutComponent />}
 			</main>
 		</section>
 	)

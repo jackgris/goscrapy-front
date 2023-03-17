@@ -156,6 +156,7 @@
 				}
 			}
 		],
+		"unicorn/no-keyword-prefix": "off",
 		"unicorn/no-nested-ternary": ["error"]
 	},
 	"settings": {

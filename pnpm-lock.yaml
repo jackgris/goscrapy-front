@@ -22,6 +22,7 @@ specifiers:
   '@vitejs/plugin-react': 3.1.0
   '@vitest/coverage-istanbul': 0.28.5
   autoprefixer: 10.4.13
+  classnames: ^2.3.2
   commitizen: 4.3.0
   css-mediaquery: 0.1.2
   cypress: 12.7.0
@@ -67,6 +68,7 @@ specifiers:
 
 dependencies:
   '@tanstack/react-query': 4.24.9_biqbaboplfbrettd7655fr4n2y
+  classnames: 2.3.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
@@ -4254,6 +4256,13 @@ packages:
       }
     engines: { node: '>=8' }
     dev: true
+
+  /classnames/2.3.2:
+    resolution:
+      {
+        integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
+      }
+    dev: false
 
   /clean-regexp/1.0.0:
     resolution:

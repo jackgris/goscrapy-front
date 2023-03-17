@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import PageButtonComponent from './PageButtonComponent'
 
 interface PaginationProperties {
 	currentPage: number
@@ -10,6 +11,15 @@ interface PaginationProperties {
 const STYLE = 'space-x-2.5  mb-2 text-2xl font-bold tracking-tight'
 const STYLE_BUTTON =
 	'hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 active:text-black disabled:text-gray-900'
+
+const styleButton = {
+	'hover:bg-gray-100': true,
+	'dark:bg-gray-800': true,
+	'dark:border-gray-700': true,
+	'dark:hover:bg-gray-700': true,
+	'active:text-black': true,
+	'disabled:text-gray-900': true
+}
 
 const PaginationComponent: FC<PaginationProperties> = ({
 	currentPage,
@@ -31,15 +41,14 @@ const PaginationComponent: FC<PaginationProperties> = ({
 
 	return (
 		<div className={`${STYLE}`}>
-			<button
-				className={`${STYLE_BUTTON}`}
-				type='button'
-				key={START}
-				onClick={(): void => onChangePage(currentPage - add)}
-				disabled={currentPage === add}
-			>
-				Back
-			</button>
+			<PageButtonComponent
+				currentPage={currentPage}
+				end={START}
+				text='Back'
+				style={styleButton}
+				disabled={add}
+				onChangePage={(): void => onChangePage(currentPage - add)}
+			/>
 			{pages.map(
 				(page: number): JSX.Element => (
 					<button
@@ -53,15 +62,14 @@ const PaginationComponent: FC<PaginationProperties> = ({
 					</button>
 				)
 			)}
-			<button
-				className={`${STYLE_BUTTON}`}
-				type='button'
-				key={END}
-				onClick={(): void => onChangePage(currentPage + add)}
-				disabled={currentPage === totalPages}
-			>
-				Next
-			</button>
+			<PageButtonComponent
+				currentPage={currentPage}
+				end={END}
+				text='Next'
+				style={styleButton}
+				disabled={totalPages}
+				onChangePage={(): void => onChangePage(currentPage + add)}
+			/>
 		</div>
 	)
 }
